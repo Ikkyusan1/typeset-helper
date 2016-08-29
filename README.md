@@ -1,5 +1,5 @@
 # typeset-helper
-A typesetting script for Photoshop CS6+. It's meant to lay the groundwork for your typestting. It will copy/paste the text from a script onto the relevant pages, with some basic font settings.
+A typesetting script for Photoshop CS6+. It's meant to lay the groundwork for your typesetting. It will copy/paste the text from a script onto the relevant pages, with some basic font settings.
 
 What it doesn't do is putting the text in the relevant bubbles. The simple reason for this is that we should keep our translation scripts as humanly readable as possible. Cluttering the text with bubble coordinates is not a good idea. Notes and short instructions are already too much, but they're necessary.
 
@@ -9,10 +9,10 @@ What it doesn't do is putting the text in the relevant bubbles. The simple reaso
  2. Run Photoshop, then File>Automate>Typeset Helper
 
 Alternatively, you can just do File>Scripts>Browse and open the script.
-Third option : normally you can also run the script by double-clicking on it. Or do a right-click, 'Open-with Photoshop'.
+Third option : normally you can also run the script by double-clicking on it. Or do a right-click, "Open-with Photoshop".
 
 
-## Translation sript rules
+## Translation script rules
 
 ### Page numbers
 - They must be written on three or four digits.
