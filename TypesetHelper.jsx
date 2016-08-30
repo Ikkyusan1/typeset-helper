@@ -1,6 +1,6 @@
 ﻿/**
  * Typeset Helper
- * Version: 0.1.0
+ * Version: 0.1.1
  * Description: A typesetting script for Photoshop CS6+. It's meant to lay the groundwork for your typesetting. It will copy/paste the text from a script onto the relevant pages, with some basic font settings.
  * Author: Ikkyusan
  *
