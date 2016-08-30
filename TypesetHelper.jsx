@@ -44,7 +44,12 @@ var defaultFonts = {
 	italic: {
 		name: 'CCJeffCampbellItalic',
 		size: 20,
-		correspondingLineStyles: ['italic', 'nib', 'thoughts']
+		correspondingLineStyles: ['italic', 'thoughts']
+	},
+	nib: {
+		name: 'CCJeffCampbellItalic',
+		size: 20,
+		correspondingLineStyles: ['nib']
 	},
 	bolditalic: {
 		name: 'CCJeffCampbellBoldItalic',
@@ -265,8 +270,9 @@ The groups will be created if they don't exist.\
 \
 ### Font styles relations\
 - regular font style : [regular], [regular_font]\
-- italic font style : [italic], [nib], [thoughts]\
+- italic font style : [italic], [thoughts]\
 - bolditalic font style : [yell], [shout], [scream], [bolditalic]\
+- not in bubble font style : [nib]\
 - sfx font style : [sfx] \
 - sfx in bubble : [sfxib]\
 - handwritten font style : [handwritten]\
@@ -374,6 +380,10 @@ function showFontsExample() {
 	"bolditalic": {\
 		"name": "CCJeffCampbellBoldItalic",\
 		"size": 22\
+	},\
+	"nib": {\
+		"name": "CCJeffCampbellItalic",\
+		"size": 20\
 	},\
 	"sfx": {\
 		"name": "BadaBoomBB",\
@@ -577,6 +587,8 @@ function setFontsUI() {
 	dlg.editItalicSize.text = selectedFonts.italic.size;
 	dlg.selectBolditalic.selection = fontNames.indexOf(selectedFonts.bolditalic.name);
 	dlg.editBolditalicSize.text = selectedFonts.bolditalic.size;
+	dlg.selectNib.selection = fontNames.indexOf(selectedFonts.nib.name);
+	dlg.editNibSize.text = selectedFonts.nib.size;
 	dlg.selectSfx.selection = fontNames.indexOf(selectedFonts.sfx.name);
 	dlg.editSfxSize.text = selectedFonts.sfx.size;
 	dlg.selectSfxib.selection = fontNames.indexOf(selectedFonts.sfxib.name);
@@ -754,7 +766,7 @@ function run() {
 
 
 // UI
-var dlg = new Window('dialog', 'Typeset parameters', [100, 100, 610, 800]);
+var dlg = new Window('dialog', 'Typeset parameters', [100, 100, 610, 820]);
 
 // files
 dlg.files = dlg.add('panel', [10, 10, 500, 320], 'Files', {borderStyle: 'etched', su1PanelCoordinates: true});
@@ -813,7 +825,7 @@ dlg.btnSelectTargetFolder.onClick = function() {
 }
 
 // font choice
-dlg.fonts = dlg.add('panel', [10, 330, 500, 620], 'Fonts', {borderStyle: 'etched', su1PanelCoordinates: true});
+dlg.fonts = dlg.add('panel', [10, 330, 500, 640], 'Fonts', {borderStyle: 'etched', su1PanelCoordinates: true});
 
 dlg.fonts.add('statictext', [10, 10, 90, 27], 'Type');
 dlg.fonts.add('statictext', [230, 10, 260, 27], 'Font');
@@ -825,7 +837,7 @@ dlg.selectRegular.onChange = function() { selectedFonts.regular.name = this.sele
 dlg.editRegularSize = dlg.fonts.add('edittext', [430, 32, 460, 52], selectedFonts.regular.size);
 dlg.editRegularSize.onChange = function() { selectedFonts.regular.size = this.text; }
 
-dlg.fonts.add('statictext', [10, 60, 90, 75], 'Italic/nib');
+dlg.fonts.add('statictext', [10, 60, 90, 75], 'Italic');
 dlg.selectItalic = dlg.fonts.add('dropdownlist', [100, 55, 400, 80], fontNames);
 dlg.selectItalic.onChange = function() { selectedFonts.italic.name = this.selection; }
 dlg.editItalicSize = dlg.fonts.add('edittext', [430, 57, 460, 77], selectedFonts.italic.size);
@@ -837,49 +849,55 @@ dlg.selectBolditalic.onChange = function() { selectedFonts.bolditalic.name = thi
 dlg.editBolditalicSize = dlg.fonts.add('edittext', [430, 82, 460, 102], selectedFonts.bolditalic.size);
 dlg.editBolditalicSize.onChange = function() { selectedFonts.bolditalic.size = this.text; }
 
-dlg.fonts.add('statictext', [10, 110, 90, 125], 'Sfx');
-dlg.selectSfx = dlg.fonts.add('dropdownlist', [100, 105, 400, 130], fontNames);
+dlg.fonts.add('statictext', [10, 110, 90, 125], 'NIB');
+dlg.selectNib = dlg.fonts.add('dropdownlist', [100, 105, 400, 130], fontNames);
+dlg.selectNib.onChange = function() { selectedFonts.nib.name = this.selection; }
+dlg.editNibSize = dlg.fonts.add('edittext', [430, 107, 460, 127], selectedFonts.nib.size);
+dlg.editNibSize.onChange = function() { selectedFonts.nib.size = this.text; }
+
+dlg.fonts.add('statictext', [10, 135, 90, 150], 'Sfx');
+dlg.selectSfx = dlg.fonts.add('dropdownlist', [100, 130, 400, 155], fontNames);
 dlg.selectSfx.onChange = function() { selectedFonts.sfx.name = this.selection; }
-dlg.editSfxSize = dlg.fonts.add('edittext', [430, 107, 460, 127], selectedFonts.sfx.size);
+dlg.editSfxSize = dlg.fonts.add('edittext', [430, 132, 460, 152], selectedFonts.sfx.size);
 dlg.editSfxSize.onChange = function() { selectedFonts.sfx.size = this.text; }
 
-dlg.fonts.add('statictext', [10, 135, 90, 150], 'Sfxib');
-dlg.selectSfxib = dlg.fonts.add('dropdownlist', [100, 130, 400, 155], fontNames);
+dlg.fonts.add('statictext', [10, 160, 90, 175], 'Sfxib');
+dlg.selectSfxib = dlg.fonts.add('dropdownlist', [100, 155, 400, 180], fontNames);
 dlg.selectSfxib.onChange = function() { selectedFonts.sfxib.name = this.selection; }
-dlg.editSfxibSize = dlg.fonts.add('edittext', [430, 132, 460, 152], selectedFonts.sfxib.size);
+dlg.editSfxibSize = dlg.fonts.add('edittext', [430, 157, 460, 177], selectedFonts.sfxib.size);
 dlg.editSfxibSize.onChange = function() { selectedFonts.sfxib.size = this.text; }
 
-dlg.fonts.add('statictext', [10, 160, 90, 175], 'Handwritten');
-dlg.selectHandwritten = dlg.fonts.add('dropdownlist', [100, 155, 400, 180], fontNames);
+dlg.fonts.add('statictext', [10, 185, 90, 200], 'Handwritten');
+dlg.selectHandwritten = dlg.fonts.add('dropdownlist', [100, 180, 400, 205], fontNames);
 dlg.selectHandwritten.onChange = function() { selectedFonts.handwritten.name = this.selection; }
-dlg.editHandwrittenSize = dlg.fonts.add('edittext', [430, 157, 460, 177], selectedFonts.handwritten.size);
+dlg.editHandwrittenSize = dlg.fonts.add('edittext', [430, 182, 460, 202], selectedFonts.handwritten.size);
 dlg.editHandwrittenSize.onChange = function() { selectedFonts.handwritten.size = this.text; }
 
-dlg.fonts.add('statictext', [10, 185, 90, 200], 'Notes');
-dlg.selectNotes = dlg.fonts.add('dropdownlist', [100, 180, 400, 205], fontNames);
+dlg.fonts.add('statictext', [10, 210, 90, 225], 'Notes');
+dlg.selectNotes = dlg.fonts.add('dropdownlist', [100, 205, 400, 230], fontNames);
 dlg.selectNotes.onChange = function() { selectedFonts.notes.name = this.selection; }
-dlg.editNotesSize = dlg.fonts.add('edittext', [430, 182, 460, 202], selectedFonts.notes.size);
+dlg.editNotesSize = dlg.fonts.add('edittext', [430, 208, 460, 228], selectedFonts.notes.size);
 dlg.editNotesSize.onChange = function() { selectedFonts.notes.size = this.text; }
 
-dlg.hyphenate = dlg.fonts.add('checkbox', [10, 220, 150, 240], 'Hyphenate');
+dlg.hyphenate = dlg.fonts.add('checkbox', [10, 240, 150, 260], 'Hyphenate');
 
-dlg.skipSfxs = dlg.fonts.add('checkbox', [10, 250, 150, 270], 'Skip sfxs');
+dlg.skipSfxs = dlg.fonts.add('checkbox', [10, 270, 150, 290], 'Skip sfxs');
 
-dlg.btnDefaultFonts = dlg.fonts.add('button', [270, 215, 350, 235], 'Default');
+dlg.btnDefaultFonts = dlg.fonts.add('button', [270, 240, 350, 260], 'Default');
 dlg.btnDefaultFonts.onClick = function() { setFonts(defaultFonts); }
 
-dlg.btnFontsFromFile = dlg.fonts.add('button', [360, 215, 480, 235], 'Load JSON');
+dlg.btnFontsFromFile = dlg.fonts.add('button', [360, 240, 480, 260], 'Load JSON');
 dlg.btnFontsFromFile.onClick = function() {	fontsFromFile(); }
 
 // and the rest
-dlg.useLayerGroups = dlg.add('checkbox', [20, 630, 170, 650], 'Use layer groups');
+dlg.useLayerGroups = dlg.add('checkbox', [20, 650, 170, 670], 'Use layer groups');
 
-dlg.btnHelp = dlg.add('button', [20, 660, 50, 690], '?');
+dlg.btnHelp = dlg.add('button', [20, 680, 50, 710], '?');
 dlg.btnHelp.onClick = function() { showHelp(); }
 
-dlg.btnCancel = dlg.add('button', [300, 660, 390, 690], 'Cancel');
+dlg.btnCancel = dlg.add('button', [300, 680, 390, 710], 'Cancel');
 
-dlg.btnRun = dlg.add('button', [400, 660, 490, 690], 'Run');
+dlg.btnRun = dlg.add('button', [400, 680, 490, 710], 'Run');
 
 dlg.btnCancel.onClick = function() { this.parent.close(); };
 

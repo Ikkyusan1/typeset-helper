@@ -87,8 +87,9 @@ The groups will be created if they don't exist.
 
 ### Font styles relations
 - regular font style : [regular], [regular_font]
-- italic font style : [italic], [nib], [thoughts]
+- italic font style : [italic], [thoughts]
 - bolditalic font style : [yell], [shout], [scream], [bolditalic]
+- not in bubble font style : [nib]
 - sfx font style : [sfx]
 - sfx in bubble : [sfxib]
 - handwritten font style : [handwritten]
@@ -119,6 +120,10 @@ It is possible to load the font choice from a json file. The font names are the 
 	"bolditalic": {
 		"name": "CCJeffCampbellBoldItalic",
 		"size": 22
+	},
+	"nib": {
+		"name": "CCJeffCampbellItalic",
+		"size": 20
 	},
 	"sfx": {
 		"name": "BadaBoomBB",
