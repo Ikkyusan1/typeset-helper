@@ -74,7 +74,7 @@ var defaultFonts = {
 	notes: {
 		name: 'ElectraLTStd-Bold',
 		size: 16,
-		correspondingLineStyles: ['panel_note', 'footnote', 'notes', 'note', 'newspaper', 'tv', 'radio']
+		correspondingLineStyles: ['panel_note', 'footnote', 'notes', 'note', 'newspaper', 'tv', 'radio', 'book', 'sign', 'pa']
 	}
 };
 var layerGroups = {
@@ -88,7 +88,7 @@ var layerGroups = {
 	},
 	others: {
 		name: 'OTHERS',
-		styles: ['panel_note', 'footnote', 'notes', 'note', 'newspaper', 'tv', 'radio']
+		styles: ['panel_note', 'footnote', 'notes', 'note', 'newspaper', 'tv', 'radio', 'book', 'sign', 'pa']
 	}
 };
 var ignoredLineSymboles = ['—', '-', '--'];
@@ -276,12 +276,12 @@ The groups will be created if they don't exist.\
 - sfx font style : [sfx] \
 - sfx in bubble : [sfxib]\
 - handwritten font style : [handwritten]\
-- notes font style : [panel_note], [footnote], [notes], [note], [newspaper], [tv], [radio]\
+- notes font style : [panel_note], [footnote], [notes], [note], [newspaper], [tv], [radio], [book], [sign], [pa]\
 \
 ### Layer groups relations\
 - BUBBLES : [regular_font], [regular], [italic], [nib], [thoughts], [bolditalic], [yell], [shout], [scream], [handwritten], [sfxib]\
 - SFXS : [sfx]\
-- OTHERS : [panel_note], [footnote], [notes], [note], [newspaper], [tv], [radio]\
+- OTHERS : [panel_note], [footnote], [notes], [note], [newspaper], [tv], [radio], [book], [sign], [pa]\
 \
 ### The rest\
 - Empty page : [blank], [empty], [no_text]\
@@ -403,6 +403,20 @@ function showFontsExample() {
 	}\
 }\
 ';
+	dlg.center();
+	dlg.show();
+}
+
+
+function showAvailableFonts() {
+	var dlg = new Window('dialog', 'Available fonts', [100, 100, 800, 750]);
+	var text = dlg.add('edittext', [10, 10, 690, 590], undefined, {readonly: true, multiline: true});
+	var btnCancel = dlg.add('button', [295, 600, 405, 630], 'Close');
+	btnCancel.onClick = function() {
+		this.parent.close();
+		dlg = null;
+	}
+	text.text = fontNames.join('\n');
 	dlg.center();
 	dlg.show();
 }
@@ -882,6 +896,9 @@ dlg.useLayerGroups = dlg.add('checkbox', [20, 650, 170, 670], 'Use layer groups'
 
 dlg.btnHelp = dlg.add('button', [20, 680, 50, 710], '?');
 dlg.btnHelp.onClick = function() { showHelp(); }
+
+dlg.btnFontList = dlg.add('button', [60, 680, 160, 710], 'Font list');
+dlg.btnFontList.onClick = function() { showAvailableFonts(); }
 
 dlg.btnCancel = dlg.add('button', [300, 680, 390, 710], 'Cancel');
 
