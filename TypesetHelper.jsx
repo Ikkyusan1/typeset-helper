@@ -779,12 +779,12 @@ dlg.btnSelectTargetFiles.onClick = function() {
 	var files = File.openDialog('Please select the files you want to typeset', psdFilter, true);
 	var pre = [];
 	for (var i = 0; i < dlg.selectedFiles.items.length; i++) {
-		pre.push(dlg.selectedFiles.items[i].toString());
+		pre.push(dlg.selectedFiles.items[i].fsName);
 	}
 	dlg.selectedFiles.removeAll();
 	if (files != null) {
 		for (var i = 0; i < files.length; i++) {
-			pre.push(files[i].toString());
+			pre.push(files[i].fsName);
 		}
 		pre = unique(clone(pre)).sort();
 		for (var i = 0; i < pre.length; i++) {
@@ -809,7 +809,7 @@ dlg.editScriptPath = dlg.files.add('edittext', [10, 230, 350, 250], '', {readonl
 dlg.btnSelectScriptPath.onClick = function() {
 	var file = File.openDialog('Please select the script file', txtFilter, false);
 	if (file != null) {
-		scriptPath = file.toString();
+		scriptPath = file.fsName;
 		dlg.editScriptPath.text = scriptPath;
 	}
 }
@@ -819,8 +819,8 @@ dlg.editTargetFolder = dlg.files.add('edittext', [10, 260, 350, 280], '', {reado
 dlg.btnSelectTargetFolder.onClick = function() {
 	var folder = Folder.selectDialog('Select target folder', null, false);
 	if (folder != null) {
-		targetFolder = folder.toString();
-		dlg.editTargetFolder.text = folder;
+		targetFolder = folder.fsName;
+		dlg.editTargetFolder.text = targetFolder;
 	}
 }
 
