@@ -31,6 +31,8 @@
 app.bringToFront();
 
 // vars
+var os = $.os.toLowerCase().indexOf('mac') >= 0 ? 'Mac' : 'Windows';
+var psdFilter, txtFilter, jsonFilter;
 var selectedFiles = [];
 var targetFolder = '';
 var scriptPath = '';
@@ -100,6 +102,17 @@ for (var i=0; i < app.fonts.length; i++) {
 	fontNames.push(app.fonts[i].postScriptName);
 };
 fontNames.unshift('No selection');
+
+if (os === 'Windows') {
+	psdFilter = 'Adobe PSD:*.psd';
+	txtFilter = 'Text File:*.txt';
+	jsonFilter = 'JSON File:*.json';
+}
+else {
+	psdFilter = function(filename) { return fileFilter(filename, ['psd']); }
+	txtFilter = function(filename) {	return fileFilter(filename, ['txt']);	}
+	jsonFilter = function(filename) {	return fileFilter(filename, ['json']); }
+}
 
 
 // polyfills and stuff
@@ -432,21 +445,6 @@ function fileFilter(filename, extensions) {
 		if (extension ==  extensions[i]) return true;
 	}
 	return false;
-}
-
-
-function psdFilter(filename) {
-	return fileFilter(filename, ['psd']);
-}
-
-
-function txtFilter(filename) {
-	return fileFilter(filename, ['txt']);
-}
-
-
-function jsonFilter(filename) {
-	return fileFilter(filename, ['json']);
 }
 
 
