@@ -656,7 +656,7 @@ function failsafe() {
 			return false;
 		}
 	}
-	return true;
+	return confirm('This will overwrite the files in target folder. Do you still wish to continue ?', true);
 }
 
 
@@ -804,7 +804,7 @@ dlg.btnRemoveSelectedFiles.onClick = function() {
 
 dlg.btnRemoveAllFiles.onClick = function() { dlg.selectedFiles.removeAll(); };
 
-dlg.btnSelectScriptPath = dlg.files.add('button', [360, 230, 480, 250], 'Script file');
+dlg.btnSelectScriptPath = dlg.files.add('button', [360, 230, 480, 250], 'Translation file');
 dlg.editScriptPath = dlg.files.add('edittext', [10, 230, 350, 250], '', {readonly: true});
 dlg.btnSelectScriptPath.onClick = function() {
 	var file = File.openDialog('Please select the script file', txtFilter, false);

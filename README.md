@@ -59,7 +59,7 @@ This bubble should be in italic. [italic]
 035# [shout]
 All the bubbles will be written in "bolditalic style"
 ```
-- It is possible to override this "page style" by adding the style you at the beginning or the end of the line.
+- It is possible to override this "page style" by adding the style at the beginning or the end of the line.
 - What about the multi-bubbles ? Almost the same principle. The sister parts will inherit the style of the ***previous part***. You can of course override the style of each part of the bubble. e.g. :
 ```
 This first part is a shout bubble. [shout]
@@ -148,6 +148,6 @@ It is possible to load the font choice from a json file. The font names are the 
 ## Greetings
 To the people from www.ps-scripts.com for their snippets.
 
-To Marc Autret from www.indiscripts.com for his ExtendScript RegexTester he posted on www.indiscripts.com
+To Marc Autret for his ExtendScript RegexTester he posted on www.indiscripts.com
 
 And as usual, to every contributors from stackoverflow.
