@@ -19,14 +19,8 @@ Third option : normally you can also run the script by double-clicking on it. Or
 - They must be followed by a # character.
 - Double-pages are numbered like this : ```010-011#```
 - The end of the script is marked by the anchor ```END#```
-- The working script is what is between the first page ```001#``` and ```END#```
+- The working script is what's between the first page number anchor ```XXX#``` and ```END#```
 - Text before and after these anchors will not be taken into account, so it's a good place to add translation notes and whatnot.
-
-
-### Files
-- Files must be in psd format.
-- The filenames must end with the page number, preceded by a space, a dash or an undescore. e.g. : ```Super-Series_vol4_010.psd``` For a double-page :	```Super-Series_vol4_012-013.psd```
-
 
 ### Bubbles
 - The rule is one bubble per line. In other words, bubbles are separated by a carriage return.
@@ -41,20 +35,20 @@ This is a the first part of the multi-bubble.
 
 ### Styles and text type/placement
 The text type (or placement) defines the nature of the text line. The text can be in a bubble, it can be not in a bubble (like some narrative stuff), it can be a sfx, or a sfx in a bubble, or a footnote...
-Based on this, not only the text type gives us typesetters a clue as to where to insert the text on the page, it also tells us what style should be applied.
+Based on this, not only does the text type give us typesetters a clue as to where the text has to be inserted on the page, it also tells us what style should be applied.
 
 Thus, text types/placements are actually text styles.
 
 - They must be written between square brackets, like so : ```[italic]```
-- Only one style ***OR*** placement per line.
-- They can be written at the beginning ***OR*** just after a line. e.g. :
+- They can be written at the beginning or just after a line. e.g. :
 ```
 [nib] This text is not in a bubble.
 This bubble should be in italic. [italic]
 ```
 - Usually, the text type should be placed at the beginning of the line, not the end.
 - Usually, the style should be added at the end of the line, not the beginning.
-- A style can be applied for a whole page. In which case, add the style right after the page number :
+- There can be several styles defined for a single line, but only the last style will be used.
+- A style can be defined for a whole page. In which case, add the style right after the page number :
 ```
 035# [shout]
 All the bubbles will be written in "bolditalic style"
@@ -67,11 +61,26 @@ This first part is a shout bubble. [shout]
 // But we want the third part to be written in italic. [italic]
 ```
 
+Keep in mind that the last style of a bubble will be used. e.g :
+```
+[nib] This text is not in a bubble, but it will be written in italic. [italic]
+```
+
+
 ### Notes
 Basically, notes are everything that doesn't correspond to the styles' keywords.
-- They must be (you guessed it) written between square brackets.
+- They must be written between *TWO* square brackets.
 - They must not contain any carriage return.
-- They must be placed at the end of a line, after everything else.
+- They must be placed at the end of a line, ideally after the styles.
+You can add as many notes as you want. Just like how a style can be defined for a whole page, you can have a note for a whole page too.
+e.g. :
+```
+Blah blah blah, Mr Freeman. [[Everything that's between these brackets won't be typesetted]]
+```
+
+## Files
+- Files must be in psd format.
+- The filenames must end with the page number, preceded by a space, a dash or an undescore. e.g. : ```Super-Series_vol4_010.psd``` For a double-page :	```Super-Series_vol4_012-013.psd```
 
 
 ## Layer sorting
