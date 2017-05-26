@@ -71,12 +71,12 @@ Keep in mind that the last style of a bubble will be used. e.g :
 Basically, notes are everything that doesn't correspond to the styles' keywords.
 - They must be written between *TWO* square brackets.
 - They must not contain any carriage return.
-- They must be placed at the end of a line, ideally after the styles.
+- They must be placed at the end of a line, ideally after the styles. e.g. :
+```
+Blah blah blah, Mr Freeman. [bold][[Everything that's between these brackets won't be typesetted]]
+```
 You can add as many notes as you want. Just like how a style can be defined for a whole page, you can have a note for a whole page too.
-e.g. :
-```
-Blah blah blah, Mr Freeman. [[Everything that's between these brackets won't be typesetted]]
-```
+
 
 ## Files
 - Files must be in psd format.
